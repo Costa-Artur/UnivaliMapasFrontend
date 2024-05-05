@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../../assets/fonts/Inter.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

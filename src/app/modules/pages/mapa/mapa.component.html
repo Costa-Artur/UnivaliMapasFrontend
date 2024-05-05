@@ -1,0 +1,18 @@
+<div class="main">
+    <img src="../../../../assets/img/univali-mapa.png" alt="">
+
+    <div class="dropdown-container">
+        <div>
+            <select id="blockDropdown">
+                <option value="" disabled selected>Selecione o Bloco</option>
+                <option *ngFor="let block of blocks" [value]="block">{{block.name}}</option>
+            </select>
+        </div> 
+        <div>
+            <select id="classDropdown">
+                <option value="" disabled selected style="color: black;">Selecione a Sala</option>
+                <option *ngFor="let class of classes" [value]="class">{{class.number}}</option>
+            </select>
+        </div>
+    </div>
+</div>
