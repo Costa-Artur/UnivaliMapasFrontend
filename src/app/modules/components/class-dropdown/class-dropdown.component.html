@@ -1,0 +1,4 @@
+<select id="classDropdown">
+    <option value="" disabled selected style="color: black;">Selecione a Sala</option>
+    <option *ngFor="let class of classes" [value]="class">{{class.number}}</option>
+</select>

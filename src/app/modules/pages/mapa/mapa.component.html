@@ -3,16 +3,10 @@
 
     <div class="dropdown-container">
         <div>
-            <select id="blockDropdown">
-                <option value="" disabled selected>Selecione o Bloco</option>
-                <option *ngFor="let block of blocks" [value]="block">{{block.name}}</option>
-            </select>
+            <app-block-dropdown />
         </div> 
         <div>
-            <select id="classDropdown">
-                <option value="" disabled selected style="color: black;">Selecione a Sala</option>
-                <option *ngFor="let class of classes" [value]="class">{{class.number}}</option>
-            </select>
+            <app-class-dropdown />
         </div>
     </div>
 </div>

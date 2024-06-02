@@ -1,0 +1,4 @@
+<select id="blockDropdown">
+    <option value="" disabled selected>Selecione o Bloco</option>
+    <option *ngFor="let block of blocks" [value]="block">{{block.name}}</option>
+</select>

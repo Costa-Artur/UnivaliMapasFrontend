@@ -1,0 +1,16 @@
+.dropdown-container {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+}
+
+select {
+    border: solid 0.2em var(--Primary-border);
+    border-radius: 10px;
+    outline: none;
+    padding: 1em;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

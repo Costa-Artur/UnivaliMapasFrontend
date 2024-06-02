@@ -1,0 +1,78 @@
+.main {
+    display: flex;
+    justify-content: space-between;
+    width: 65vw;
+    align-items: center;
+}
+
+.disciplines {
+    background-color: var(--white);
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.discipline-edit {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: 20px;
+    width: 40vw;
+    padding: 3em;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.discipline {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.dropdowns {
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 3em;
+}
+
+.buttons {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.btn {
+    border: solid 0.2em var(--Primary);
+    padding: 1em;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.5s;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btn-primary {
+    color: var(--white);
+    background-color: var(--Primary);
+
+    &:hover {
+        background-color: var(--Primary-010);
+        border: solid 0.2em var(--Primary-010);
+    }
+}
+
+.btn-secondary {
+    color: var(--Primary);
+
+    &:hover {
+        background-color: var(--grey);
+    }
+}

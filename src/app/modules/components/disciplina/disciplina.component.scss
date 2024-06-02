@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--white);
+    border-radius: 5px;
+    border: solid var(--Primary-border);
+    box-sizing: border-box;
+    margin-bottom: 0.5vh;
+
+    padding: 2em;
+    font-size: 10px;
+    width: 20vw;
+
+    &:hover {
+        background-color: var(--grey);
+        cursor: pointer;
+    }
+}
+
+.classroom-block {
+    display: flex;
+    color: var(--Primary-label);
+
+    & > .classroom {
+        margin-right: 0.5em;
+    }
+}
+
+.date {
+    color: var(--Primary-label);
+}

@@ -1,48 +1,29 @@
 .main {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    height: 60vh;
-    width: 70vw;
+    flex-direction: column
 }
 
 .container {
     background: var(--white);
-    color: var(--black);
-    width: 40%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border-radius: 20px;
+    margin-top: 3em;
+    padding: 3em;
     box-sizing: border-box;
+    width: 50vw;
+    align-items: center;
 
-    padding: 2em;
-    border-radius: 12px;
-
-    & {
-        img {
-            height: 2em;
-        }
-    }
-}
-
-.header {
     display: flex;
-    align-items: baseline;
+    justify-content: space-between;
+
+    border: solid 0.3em var(--Primary-border);
 }
 
-h1 {
-    font-size: 26px;
-    margin-right: 1em;
-    color: var(--black);
-}
-
-h2{
-    font-size: 20px;
+.duration-classroom-teacher {
     color: var(--Primary-label);
 }
 
-a {
-    padding: 1em;
+img {
+    height: 3em;
 }
