@@ -1,0 +1,21 @@
+<div class="sidebar">
+    <header class="header">
+        <img src="../../../../assets/icons/Logo.svg" />
+        <div class="header-info">
+            <img src="../../../../assets/icons/User.svg" alt="">
+            <div class="header-info_user">
+                <strong>Nome de usuário</strong>
+                <p>Código de pessoa</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="sidebar-main">
+        <ul>
+            <li class="sidebar__item"><a routerLink="/aluno-page" routerLinkActive="active"><img src="../../../../assets/icons/Location-pin.svg" alt="">Encontrar Sala</a></li>
+            <li class="sidebar__item"><a routerLink="/calendar-page" routerLinkActive="active"><img src="../../../../assets/icons/Calendar.svg" alt="">Calendário de Aulas</a></li>
+            <li class="sidebar__item"><a routerLink="/disciplines-page" routerLinkActive="active"><img src="../../../../assets/icons/Edit.svg" alt="">Disciplinas</a></li>
+        </ul>
+        <button (click)="goToItems()" class="logout"><img src="../../../../assets/icons/Logout.svg" alt="">Logout</button>
+    </section>
+</div>

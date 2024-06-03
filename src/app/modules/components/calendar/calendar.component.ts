@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { PrimeNGConfig } from 'primeng/api';
 import { CalendarModule } from 'primeng/calendar';
 
 @Component({
@@ -11,4 +12,5 @@ import { CalendarModule } from 'primeng/calendar';
 })
 export class CalendarComponent {
   date: Date[] | undefined;
+
 }

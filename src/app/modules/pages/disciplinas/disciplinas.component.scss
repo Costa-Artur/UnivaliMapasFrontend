@@ -1,8 +1,14 @@
+.page {
+    display: flex;
+}
+
 .main {
     display: flex;
-    justify-content: space-between;
-    width: 65vw;
+    gap: 3vw;
+    padding: 3vw;
+    width: 100%;
     align-items: center;
+    background: #dedede;
 }
 
 .disciplines {
