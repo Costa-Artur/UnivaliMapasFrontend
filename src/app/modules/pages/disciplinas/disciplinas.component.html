@@ -1,31 +1,36 @@
 
 <div class="page">
-<app-sidebar />
-<div class="main">
-    <section class="disciplines">
-        <app-disciplina />
-        <app-disciplina />
-        <app-disciplina />
-        <app-disciplina />
-        <app-disciplina />
-    </section>
+  <app-sidebar />
+  <div class="main">
+      <section class="disciplines">
+        @for (aula of aulas; track $index) {
+          <app-disciplina
+          [data]="aula.data | dateFormat"
+          [name]="aula.materia.name"
+          [sala]="aula.sala.number"
+          [bloco]="aula.sala.bloco.letraBloco"
+          (click)="openEditModal($index)"/>
+        }
+      </section>
 
-    <section class="discipline-edit">
-        <div class="header">
-            <h1 class="discipline">Engenharia de Software II</h1>
-            <h2 class="date">10/06/2024</h2>
-        </div>
+      @if(isEditOpen && selectedAula) {
+        <section class="discipline-edit">
+          <div class="header">
+              <h1 class="discipline">{{selectedAula.materia.name}}</h1>
+              <h2 class="date">{{selectedAula.data | dateFormat}}</h2>
+          </div>
 
-        <div class="dropdowns">
-            <app-block-dropdown />
-            <app-class-dropdown />
-        </div>
+          <div class="dropdowns">
+              <app-block-dropdown />
+              <app-class-dropdown />
+          </div>
 
-        <div class="buttons">
-            <button class="btn btn-secondary">Cancelar</button>
-            <button class="btn btn-primary">Salvar</button>
-            <button class="btn btn-primary">Salvar em Todos</button>
-        </div>
-    </section>
-</div>
+          <div class="buttons">
+              <button class="btn btn-secondary">Cancelar</button>
+              <button class="btn btn-primary">Salvar</button>
+              <button class="btn btn-primary">Salvar em Todos</button>
+          </div>
+      </section>
+      }
+  </div>
 </div>
