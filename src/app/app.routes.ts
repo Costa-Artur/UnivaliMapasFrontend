@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { CalendarComponent } from './modules/components/calendar/calendar.component';
 import { DisciplinasComponent } from './modules/pages/disciplinas/disciplinas.component';
 import { MapaComponent } from './modules/pages/mapa/mapa.component';
 import { AlunoComponent } from './modules/pages/aluno/aluno.component';

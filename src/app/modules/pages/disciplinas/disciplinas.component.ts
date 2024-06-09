@@ -28,7 +28,6 @@ export class DisciplinasComponent implements OnInit  {
   }
 
   ngOnInit(): void {
-    console.log("teste")
     this.service.getAulasByStudentId(1).subscribe((data) => {
       console.log(data);
       this.aulas = data;
