@@ -2,8 +2,8 @@
     <div class="container">
         <img src="../../../../assets/icons/Logo.svg" alt="Logo UNIVALI">
         <section class="container-login">
-            <input type="text" placeholder="Login"> 
-            <input type="text" placeholder="Senha">
+            <input type="text" placeholder="Login" [(ngModel)]="codigoPessoa">
+            <input type="password" placeholder="Senha" [(ngModel)]="password">
             <div class="buttons">
                 <button (click)="goToItems()" id="login_button">Login</button>
                 <button (click)="goToItems()" id="guest_button">Entrar como visitante</button>
