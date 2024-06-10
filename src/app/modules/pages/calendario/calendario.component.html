@@ -1,27 +1,31 @@
 <div class="page">
-<app-sidebar />
-<div class="main">
-    <div class="card flex justify-content-center">
-        <p-calendar  
-            [(ngModel)]="date" 
-            [inline]="true" 
-            [showWeek]="true"
-            dateFormat="dd.mm.yy"
-            (onSelect)="selectDate()" />
-    </div>
-    @if (isDateSelected){
-    <div class="container">
-        <section class="date-discipline">
-            <h1 class="date">{{ diaNumero }} {{ diaNome }}</h1>
-            <h1 class="discipline">Engenharia de Software II {{selectedAula.materia.name}}</h1>
-        </section>
-        <section class="duration-classroom-teacher">
-            <h2 class="duration">19:00 - 22:00</h2>
-            <h2 class="classroom">D2 - 108</h2>
-            <h2 class="teacher">Adriana Gomes Alves</h2>
-        </section>
-        <a href=""><img src="../../../../assets/icons/Location-arrow.svg" alt="Seta de localização"></a>      
-    </div>
-    }
-</div>
+    <app-sidebar />
+        <div class="main">
+            <div class="card flex justify-content-center">
+                <p-calendar  
+                    [(ngModel)]="date" 
+                    [inline]="true" 
+                    [showWeek]="true"
+                    dateFormat="dd.mm.yy"
+                    (onSelect)="selectDate()" />
+            </div>
+            @if (isDateSelected && isClassDay){
+            <div class="container">
+                <section class="date-discipline">
+                    <h1 class="date">{{ diaNumero }} {{ diaNome }}</h1>
+                    <h1 class="discipline">{{ materiaAula }}</h1>
+                </section>
+                <section class="duration-classroom-teacher">
+                    <h2 class="duration">19:00 - 22:00</h2>
+                    <h2 class="classroom">{{ blocoAula }} - {{ salaAula }}</h2>
+                    <h2 class="teacher">{{ professorAula }}</h2>
+                </section>
+                <a href=""><img src="../../../../assets/icons/Location-arrow.svg" alt="Seta de localização"></a>      
+            </div>
+            } @else if (isDateSelected && !isClassDay) {
+                <div class="container">
+                    <h1>Sem aula neste dia</h1>      
+                </div>
+            }
+        </div>
 </div>
