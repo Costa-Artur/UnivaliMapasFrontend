@@ -10,6 +10,7 @@ import { DateFormatPipe } from "../../pipes/date-format.pipe";
 import { DropdownModule } from 'primeng/dropdown';
 import { BlocoForDropdown, BlocoPopulatedInterface, SalaPopulatedInterface } from '../../interfaces/bloco.interface';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
 
 @Component({
     selector: 'app-disciplinas',
@@ -31,14 +32,16 @@ export class DisciplinasComponent implements OnInit  {
   blocosOptions: any[] = [];
   salasOptions: any[] = [];
 
-  constructor(private service: AulasService) { }
+  constructor(private service: AulasService, private login: LoginService) { }
 
   parseDate(dateString: string): Date {
     return new Date(dateString);
   }
 
   ngOnInit(): void {
-    this.service.getAulasByStudentId(1).subscribe((data) => {
+    const studentId = this.login.loggedUserInfo?.userId;
+    if(studentId)
+    this.service.getAulasByStudentId(studentId).subscribe((data) => {
       console.log('Aulas:', data);
       this.aulas = data;
     });
