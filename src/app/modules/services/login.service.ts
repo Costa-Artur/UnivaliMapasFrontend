@@ -13,6 +13,9 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
+  logout() {
+    this.loggedUserInfo = undefined;
+  }
 
   login(codigoPessoa: string, password: string): Observable<LoggedUserInterface> {
     const login: loginInterface = { codigoPessoa, password };

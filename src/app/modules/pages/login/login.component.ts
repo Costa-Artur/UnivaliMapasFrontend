@@ -35,4 +35,9 @@ export class LoginComponent {
       }
     });
   }
+
+  visitor() {
+    this.service.logout();
+    this.router.navigate(['/aluno-page']);
+  }
 }

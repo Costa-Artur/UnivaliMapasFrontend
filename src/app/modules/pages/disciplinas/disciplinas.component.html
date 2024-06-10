@@ -21,13 +21,26 @@
           </div>
 
           <div class="dropdowns">
-              <app-block-dropdown />
-              <app-class-dropdown />
+            <p-dropdown
+            [options]="blocosOptions"
+            [(ngModel)]="selectedBloco"
+            optionLabel="label"
+            placeholder="Selecione um Bloco"
+            (onChange)="onBlocoChange($event)">
+        </p-dropdown>
+
+        <p-dropdown
+            [options]="salasOptions"
+            [(ngModel)]="selectedSala"
+            optionLabel="label"
+            placeholder="Selecione uma Sala"
+            [disabled]="!selectedBloco">
+        </p-dropdown>
           </div>
 
           <div class="buttons">
               <button class="btn btn-secondary" (click)="isEditOpen = false">Cancelar</button>
-              <button class="btn btn-primary">Salvar</button>
+              <button class="btn btn-primary" (click)="save()">Salvar</button>
           </div>
       </section>
       }
