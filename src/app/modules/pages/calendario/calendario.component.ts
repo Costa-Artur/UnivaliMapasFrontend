@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { AulaInterface } from '../../interfaces/aula.interface';
 import { AulasService } from '../../services/aulas.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { AulasService } from '../../services/aulas.service';
     standalone: true,
     templateUrl: './calendario.component.html',
     styleUrl: './calendario.component.scss',
-    imports: [AlunoComponent, SidebarComponent, FormsModule, CalendarModule]
+    imports: [AlunoComponent, SidebarComponent, FormsModule, CalendarModule, RouterLink, RouterLinkActive]
 })
 export class CalendarioComponent {
     //Selecionar data e exibir no card
@@ -24,7 +25,7 @@ export class CalendarioComponent {
 
     aulas: AulaInterface[] = [];
     selectedAula: AulaInterface | undefined;
-    
+
     diaAula: string | undefined;
     mesAula: string | undefined;
     anoAula: string | undefined;
@@ -33,11 +34,11 @@ export class CalendarioComponent {
     materiaAula: string | undefined
     blocoAula: string | undefined
     professorAula: string | undefined
-    
+
     selectDate() {
         let dateString = this.date?.toString();
         let splittedDate = dateString?.split(" ", 3);
-        
+
         if (splittedDate) {
             this.diaNome = splittedDate[0];
             this.diaNumero = splittedDate[2];

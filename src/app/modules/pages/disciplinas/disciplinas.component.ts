@@ -11,13 +11,17 @@ import { DropdownModule } from 'primeng/dropdown';
 import { BlocoForDropdown, BlocoPopulatedInterface, SalaPopulatedInterface } from '../../interfaces/bloco.interface';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
+import { ToastModule } from 'primeng/toast';
+import { RippleModule } from 'primeng/ripple';
+import { MessageService } from 'primeng/api';
 
 @Component({
     selector: 'app-disciplinas',
     standalone: true,
     templateUrl: './disciplinas.component.html',
     styleUrls: ['./disciplinas.component.scss'],
-    imports: [CommonModule, DisciplinaComponent, BlockDropdownComponent, ClassDropdownComponent, SidebarComponent, DateFormatPipe, DropdownModule, FormsModule]
+    providers: [MessageService],
+    imports: [CommonModule, DisciplinaComponent, BlockDropdownComponent, ClassDropdownComponent, SidebarComponent, DateFormatPipe, DropdownModule, FormsModule, ToastModule, RippleModule]
 })
 export class DisciplinasComponent implements OnInit  {
 
@@ -32,7 +36,7 @@ export class DisciplinasComponent implements OnInit  {
   blocosOptions: any[] = [];
   salasOptions: any[] = [];
 
-  constructor(private service: AulasService, private login: LoginService) { }
+  constructor(private service: AulasService, private login: LoginService, private messageService: MessageService) { }
 
   parseDate(dateString: string): Date {
     return new Date(dateString);
@@ -41,7 +45,7 @@ export class DisciplinasComponent implements OnInit  {
   ngOnInit(): void {
     const studentId = this.login.loggedUserInfo?.userId;
     if(studentId)
-    this.service.getAulasByStudentId(studentId).subscribe((data) => {
+    this.service.getAulasByStudentId(1).subscribe((data) => {
       console.log('Aulas:', data);
       this.aulas = data;
     });
@@ -84,7 +88,10 @@ onBlocoChange(event: { value: BlocoForDropdown }) {
         console.log('Aula atualizada');
         this.isEditOpen = false;
       });
+      document.location.reload();
+    } else {
+      this.messageService.add({ severity: 'error', summary: '', detail: 'Preencha os campos' });
     }
-    document.location.reload();
+
   }
 }

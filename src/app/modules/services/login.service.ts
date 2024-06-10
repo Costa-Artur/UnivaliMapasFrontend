@@ -1,20 +1,24 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserInterface } from '../interfaces/aula.interface';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { LoggedUserInterface, loginInterface, loginResponseInterface } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private url = "http://localhost:5000/api/"
+  private url = "http://localhost:5000/api/";
   public loggedUserInfo: LoggedUserInterface | undefined;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadUserFromLocalStorage();
+  }
 
   logout() {
     this.loggedUserInfo = undefined;
+    localStorage.removeItem('loggedUserInfo');
   }
 
   login(codigoPessoa: string, password: string): Observable<LoggedUserInterface> {
@@ -36,10 +40,22 @@ export class LoginService {
           map((userInfo) => {
             userInfo.token = token;
             this.loggedUserInfo = userInfo;
+            this.saveUserToLocalStorage(userInfo);
             return userInfo;
           })
         );
       })
     );
+  }
+
+  private saveUserToLocalStorage(userInfo: LoggedUserInterface) {
+    localStorage.setItem('loggedUserInfo', JSON.stringify(userInfo));
+  }
+
+  private loadUserFromLocalStorage() {
+    const userInfoJson = localStorage.getItem('loggedUserInfo');
+    if (userInfoJson) {
+      this.loggedUserInfo = JSON.parse(userInfoJson) as LoggedUserInterface;
+    }
   }
 }
