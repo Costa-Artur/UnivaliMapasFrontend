@@ -9,5 +9,9 @@
                 <button (click)="visitor()" id="guest_button">Entrar como visitante</button>
             </div>
         </section>
+        @if(messages) {
+          <p-messages [(value)]="messages" [enableService]="false"/>
+        }
+
     </div>
 </main>
