@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 
@@ -15,9 +15,11 @@ interface Class {
   templateUrl: './class-dropdown.component.html',
   styleUrl: './class-dropdown.component.scss'
 })
-export class ClassDropdownComponent {
+export class ClassDropdownComponent implements OnInit {
   classes: Class[] | undefined
   selectedClass: Class | undefined
+
+  @Output() classEmmiter: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit() {
     this.classes = [
@@ -45,6 +47,8 @@ export class ClassDropdownComponent {
   }
 
   onSelectedClass() {
-    console.log(this.selectedClass?.number);
+    if(this.selectedClass){
+      this.classEmmiter.emit(this.selectedClass.number.toString())
+    }
   }
 }

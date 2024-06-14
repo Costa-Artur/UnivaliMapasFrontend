@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 
@@ -19,6 +19,8 @@ export class BlockDropdownComponent {
   blocks: Block[] | undefined
   selectedBlock: Block | undefined
 
+  @Output() blockEmmiter: EventEmitter<string> = new EventEmitter<string>();
+
   ngOnInit() {
     this.blocks = [
     { id: 1, name: 'B1' },
@@ -31,6 +33,8 @@ export class BlockDropdownComponent {
   }
 
   onSelectedBlock() {
-    console.log(this.selectedBlock?.name);
+    if(this.selectedBlock){
+      this.blockEmmiter.emit(this.selectedBlock.name)
+    }
   }
 }

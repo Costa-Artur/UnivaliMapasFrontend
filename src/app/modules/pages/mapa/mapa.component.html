@@ -1,13 +1,32 @@
 <div class="main">
     
-    <img src="../../../../assets/img/univali-mapa.png" alt="">
-
+    @if (selectedBlock == "B1" && selectedClass == "108") {
+        <img class="B1_108" src="../../../../assets/img/B1-108.jpg" alt=""> 
+        } @else if (selectedBlock == "B4" && selectedClass == "105") {
+            <img class="B4_105" src="../../../../assets/img/B4-105.jpg" alt=""> 
+        } @else if (selectedBlock == "B6" && selectedClass == "106") {
+            <img src="../../../../assets/img/B6-106.jpg" alt=""> 
+        } @else if (selectedBlock == "C3" && selectedClass == "202") {
+            <img class="C3_202" src="../../../../assets/img/C3-202.jpg" alt=""> 
+        } @else if (selectedBlock == "C5" && selectedClass == "106") {
+            <img class="C5_106" src="../../../../assets/img/C5-106.jpg" alt=""> 
+        } @else if (selectedBlock == "D4" && selectedClass == "110") {
+            <img class="D4_110" src="../../../../assets/img/D4-110.jpg" alt="">
+        } @else {
+            @if (selectedBlock == undefined || selectedClass == undefined){
+                <h1>Selecione um bloco e uma sala</h1>
+            } @else {
+                <h1>Sala não cadastrada</h1>
+            }
+        }
+        
+        
     <div class="dropdown-container">
         <div>
-            <app-block-dropdown />
+            <app-block-dropdown (blockEmmiter)="onBlockChanged($event)"/>
         </div> 
         <div>
-            <app-class-dropdown />
+            <app-class-dropdown (classEmmiter)="onClassChanged($event)"/>
         </div>
     </div>
 </div>

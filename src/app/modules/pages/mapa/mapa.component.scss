@@ -9,12 +9,33 @@
 
 img {
     width: 95%;
+    height: 60%;
     padding: 0.5em;
     background: var(--Primary);
+
+    &.B1_108 {
+        object-fit: cover;
+        object-position: 0 0;
+    }
+
+    &.B4_105 {
+        object-fit: cover;
+        object-position: 0 0;
+    }
+
+    &.C3_202 {
+        object-fit: cover;
+        object-position: 0 60%;
+    }
+
+    &.D4_110 {
+        object-fit: cover;
+        object-position: 0 25%;
+    }
 }
 
 .dropdown-container {
-    width: 25%;
+    width: 35%;
     display: flex;
     justify-content: space-between;
 }

@@ -13,7 +13,18 @@ import { SidebarComponent } from "../../components/sidebar/sidebar.component";
     imports: [FormsModule, CommonModule, ClassDropdownComponent, BlockDropdownComponent, SidebarComponent]
 })
 export class MapaComponent {
+    selectedClass: string | undefined
+    selectedBlock: string | undefined
 
+    constructor() {}
+
+    onClassChanged(classNum: string) {
+        this.selectedClass = classNum
+    }
+
+    onBlockChanged(blockName: string) {
+        this.selectedBlock = blockName
+    }
 }
 
     
