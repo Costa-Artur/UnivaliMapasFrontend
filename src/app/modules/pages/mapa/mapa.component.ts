@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ClassDropdownComponent } from '../../components/class-dropdown/class-dropdown.component';
 import { BlockDropdownComponent } from '../../components/block-dropdown/block-dropdown.component';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-mapa',
@@ -16,7 +17,12 @@ export class MapaComponent {
     selectedClass: string | undefined
     selectedBlock: string | undefined
 
-    constructor() {}
+    constructor(private route: ActivatedRoute) {
+        this.route.queryParams.subscribe(params => {
+            this.selectedClass = params['sala']
+            this.selectedBlock = params['bloco']
+        })
+    }
 
     onClassChanged(classNum: string) {
         this.selectedClass = classNum

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { AulaInterface } from '../../interfaces/aula.interface';
 import { AulasService } from '../../services/aulas.service';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationExtras, Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 
 @Component({
@@ -16,7 +16,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     imports: [AlunoComponent, SidebarComponent, FormsModule, CalendarModule, RouterLink, RouterLinkActive]
 })
 export class CalendarioComponent {
-    //Selecionar data e exibir no card
     date: Date[] | undefined;
     diaNome: string | undefined;
     diaNumero: string | undefined;
@@ -64,8 +63,17 @@ export class CalendarioComponent {
         }
     }
 
-    //Exibir no card informações sobre a aula daquele dia
-    constructor(private service: AulasService) { }
+    goToMap() {
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          sala: this.salaAula,
+          bloco: this.blocoAula
+        }
+      }
+      this.router.navigate(['/aluno-page'], navigationExtras)
+    }
+
+    constructor(private service: AulasService, private router: Router) { }
 
     ngOnInit(): void {
         this.service.getAulasByStudentId(1).subscribe((data) => {
